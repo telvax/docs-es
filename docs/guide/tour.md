@@ -1,4 +1,4 @@
-> Traducido de [telvax/telvax@7f400a6](https://github.com/telvax/telvax/commit/7f400a605113ccec612c6418625d8607023adeef) (`docs/guide/tour.md`).
+> Traducido de [telvax/telvax@1c88355](https://github.com/telvax/telvax/commit/1c883558b98a024149553d2ba5265f075fc553be) (`docs/guide/tour.md`).
 
 # Un recorrido por Telvax
 
@@ -443,6 +443,7 @@ Un contador puede tener etiquetas, un `Map[Text, Text]`: `std.metrics.count("job
 `jobs_total{status="done"}`, con `by` como tercer argumento. El nombre son letras, dígitos, `_` y `:`, un contador tiene como máximo
 1.000 conjuntos de etiquetas (así que una etiqueta no debe hacerse con lo que envía un usuario), y `--process-time-header` añade
 `x-process-time-ms` a cada respuesta.
+Un número que sube y baja, como las entradas de una caché, es un gauge: `std.metrics.set("cache_size", cache.len())` reemplaza su valor cada vez, y el servidor lo lista con `# TYPE cache_size gauge`. Un nombre es un contador o un gauge, no ambos.
 `--error-format detail` escribe los errores que produce el servidor como `{"detail": ...}`, y un cuerpo que no encaja en su tipo como `422`,
 como hace FastAPI; el valor por defecto es `{"error": ...}` y `400`. Una respuesta que el programa construye con `Response` nunca se cambia.
 Una función que falla en tiempo de ejecución responde `500` con `Internal server error`; el motivo va al log con el id de la petición.
